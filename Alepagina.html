@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Ale</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #b3e5fc; /* Celeste pastel */
+            color: #333;
+        }
+
+        header {
+            background-color: #81d4fa; /* Celeste más fuerte */
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        header img {
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 80px;
+        }
+
+        header img.left {
+            left: 10px;
+        }
+
+        header img.right {
+            right: 10px;
+        }
+
+        header h1, header p {
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-100%);
+            animation: fall 1.5s ease-out forwards;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            animation-delay: 0.5s;
+        }
+
+        header p {
+            font-size: 1.2em;
+            animation-delay: 1s;
+        }
+
+        @keyframes fall {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #0288d1;
+        }
+
+        section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .interactive-btn, .redirect-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .interactive-btn:hover, .redirect-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .redirect-btn {
+            border-radius: 50px; /* Bordes redondeados */
+            margin-left: 10px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Asegura que el popup esté en frente */
+        }
+
+        .popup img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #popup-gato {
+            width: 300px; /* Ajusta el ancho */
+            height: auto; /* Auto ajuste de alto */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .salchicoso {
+            opacity: 0;
+            animation: slideDown 1s ease-out forwards;
+        }
+
+        .carrusel img {
+            width: 100%;
+            max-width: 800px; /* Tamaño mayor para el carrusel */
+            height:200px ;
+            margin: 13px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://images.vexels.com/content/151935/preview/raccoon-animal-cartoon-526400.png" alt="Mapache animado" class="left">
+        <h1>Página de Ale</h1>
+        <p>Página de cosas que le gustan a Ale</p>
+        <img src="https://images.vexels.com/media/users/3/323506/isolated/preview/eaefd28273693c92c88165d79f8cd249-simpa-tico-mapache-de-dibujos-animados.png" alt="Mapache animado" class="right">
+    </header>
+
+    <div class="content">
+        <!-- Apartado de One Piece -->
+        <section id="one-piece">
+            <h2><strong>One Piece</strong></h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ-aOuAsHFt9VsKR40DO-23K-ZxXR8A2YamccB32OO-vrAwzNeGs2ECuo&s=10" alt="One Piece">
+            <p>A Ale le gusta mucho el anime de <strong>One Piece</strong>, es su animé favorito le gustan mucho sus personajes tanto como su historia destacando a personajes favoritos de ella como Zoro.</p>
+            <button class="interactive-btn" onclick="mostrarPersonajes()">Personajes que le gustan</button>
+            <a class="redirect-btn" href="https://vm.tiktok.com/ZMh2bCwJn/">ver One Piece</a>
+        </section>
+
+        <!-- Apartado de Mapaches -->
+        <section id="mapaches">
+            <h2>Mapaches</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvJ-u-9Qe86s3ZbcIpO2eSwrPXPEbUQiKhna9lIQ3MEj9r2lkcXAPXaV2k&s=10" alt="Mapache">
+            <p>Los mapaches son los animales favoritos de Ale. Le encanta como son por su pelaje y las manchas que tienen y su anatomía.</p>
+            <button class="interactive-btn" onclick="mostrarDatosMapache()">Datos curiosos sobre mapaches</button>
+        </section>
+
+        <!-- Apartado de Gatos -->
+        <section id="gatos">
+            <h2>Gatos</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU2S0SXPx8aYI7OGeT1Tg6CX2kbP8pLkAaOQ&usqp=CAU" alt="Gato">
+            <p>Ale ama a los gatos, más a los que ella tiene. Es una gran fanática de ellos y cuida bien de estos. Los quiere y aprecia mucho.</p>
+            <button class="interactive-btn" onclick="mostrarGifGato()">Mira un GIF de gatos</button>
+            <a class="interactive-btn" href="https://vm.tiktok.com/ZMh2bfM6d/">Ir a gatosm</a>
+        </section>
+
+        <!-- Apartado de Joji -->
+        <section id="joji">
+            <h2>Joji</h2>
+            <img src="https://i.scdn.co/image/ab67616d0000b2738da6404284573219a9b1e2f4" alt="Joji">
+            <p>Este es el artista favorito de Ale, <strong>Joji</strong>, por sus canciones lindas de buen ritmo y por su letra, hace que le guste mucho a ella.</p>
+            <button class="interactive-btn" onclick="window.location.href='https://vm.tiktok.com/ZMh2a36UK/'">mira a Joji</button>
+            <button class="redirect-btn" onclick="window.location.href='https://open.spotify.com/artist/3MZsBdqDrRTJihTHQrO6Dq'">Ir a Spotify</button>
+        </section>
+
+        <!-- Apartado de Choso -->
+        <section id="choso">
+            <h2>Choso</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqM7u13eG2PKT2dtHTnwEuKMxxUufv9-gwKTF7JANZ9nDiYIzb2OAqaZA&s=10" alt="Choso">
+            <p>Es el personaje favorito de Ale, <strong>Choso</strong>, un personaje de <em>Jujutsu Kaisen</em>. Le gusta su personalidad y su físico. ¡Y a quién no!</p>
+            <button class="interactive-btn" onclick="mostrarCarrusel()">toca
+</button>
+        </section>
+    </div>
+
+    <!-- Popup interactivo -->
+    <div id="popup" class="popup">
+        <span class="close-btn" onclick="cerrarPopup()">X</span>
+        <div id="popup-content"></div>
+    </div>
+
+    <!-- Popup específico para el GIF de gatos, con dimensiones más grandes -->
+    <div id="popup-gato" class="popup">
+        <span class="close-btn" onclick="cerrarPopup()">X</span>
+        <div id="popup-content-gato"></div>
+    </div>
+
+    <script>
+        // Función para mostrar popup de personajes de One Piece con imágenes
+        function mostrarPersonajes() {
+            const popupContent = `
+                <h3>Personajes favoritos de ella</h3>
+                <ul>
+                    <li>Luffy - El capitán de los piratas</li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaooa7vBU19-41BA59ySRVCgMg-cLxccPZqfggFunXXs_3Y4ItCp11yZc&s=10" alt="Luffy">
+                    <li>Zoro su personaje favorito - El espadachín de tres espadas</li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnCBCUSg0DvANuxowAj6gsACaVIlL-WyQTBlpS7A-DOY-qHZ-yzGgBQOw&s=10" alt="Zoro">
+                </ul>`;
+            mostrarPopup(popupContent);
+        }
+
+        // Función para mostrar datos curiosos de mapaches
+        function mostrarDatosMapache() {
+            const popupContent = `
+                <h3>Cosas de mapaches</h3>
+                <p>Los mapaches tienen:
+                <ul>
+                    <li><strong>Antifaz:</strong> El antifaz que tienen alrededor de los ojos les ayuda a mejorar la visión al suprimir los reflejos.</li>
+                    <li><strong>Anillos de la cola:</strong> Tienen de cuatro a siete anillos negros alternados con grises en la cola.</li>
+                    <li><strong>Sensibilidad:</strong> Sus manos se parecen a las de los humanos y pueden tener la misma sensibilidad.</li>
+                    <li><strong>Sociabilidad:</strong> Aunque tienen fama de ser solitarios, las hembras se reúnen para comer en grupo.</li>
+                </ul>
+                </p>`;
+            mostrarPopup(popupContent);
+        }
+
+        // Función para mostrar GIF de gatos en un popup específico
+        function mostrarGifGato() {
+            const popupContent = `
+                <h3>Un adorable GIF de gatos</h3>
+                <img src="https://i.imgur.com/jDE0iv4.gif" alt="Gif de gato">`;
+            mostrarPopupGato(popupContent);
+        }
+
+        // Función para mostrar canción de Joji
+        function mostrarCancion() {
+            const popupContent = `
+                <h3>Canción de Joji</h3>
+                <iframe width="100%" height="315" src="https://vm.tiktok.com/ZMh2u4k1a/" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            mostrarPopup(popupContent);
+        }
+
+        // Función para mostrar carrusel de imágenes de Choso
+        function mostrarCarrusel() {
+            const popupContent = `
+                <h3 class="salchicoso">Tu Salchicoso</h3>
+                <div class="carrusel">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWkk2M06wThAHZwN0ULtvF9e8S6e2wDkwAW9kzN1lZWbui_stFc0HoAU&s=10" alt="Choso 1">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ZGSmG1y3VvXJ4v9ETlAIQSZ-i21gmsjI1xR-cKOk1PKOnTKRlEOSybrt&s=10" alt="Choso 2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Yr8nsdgCZ1VxscY8vPDeJDqOCybdBzUVnA&usqp=CAU" alt="Choso 3">
+                </div>`;
+            mostrarPopup(popupContent);
+        }
+
+        // Función para mostrar el popup con el contenido pasado
+        function mostrarPopup(content) {
+            const popup = document.getElementById('popup');
+            document.getElementById('popup-content').innerHTML = content;
+            popup.style.display = 'block';
+        }
+
+        // Función para mostrar el popup de gatos con el contenido pasado
+        function mostrarPopupGato(content) {
+            const popup = document.getElementById('popup-gato');
+            document.getElementById('popup-content-gato').innerHTML = content;
+            popup.style.display = 'block';
+        }
+
+        // Función para cerrar el popup
+        function cerrarPopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popup-gato').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
